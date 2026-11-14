@@ -45,9 +45,7 @@ Built from source (see [For developers](#for-developers)), the same programs are
 `dist\onefile\`.
 
 > Tip: if you put a shortcut to `Fotodit.exe` into the `shell:sendto` folder, you can select photos in File
-> Explorer and add them straight to the selection with right-click → **Send to → Fotodit**. Installed as a
-> package (MSIX), Fotodit keeps `Fotodit.exe` in a folder Windows protects: there the shortcut points to
-> `%LOCALAPPDATA%\Microsoft\WindowsApps\fotodit.exe`.
+> Explorer and add them straight to the selection with right-click → **Send to → Fotodit**.
 
 ## Usage
 
@@ -352,7 +350,7 @@ file nobody pins, the size and SHA-256 that `fetch_sources.py` prints, once the 
 ### Signing
 
 Without a code-signing certificate, Windows SmartScreen warns about a newly downloaded exe until it has
-earned a reputation. Two ways to sign:
+earned a reputation. Three ways to sign:
 
 * **SignPath Foundation** signs open source projects for free, from a CI build of the public repository
   (e.g. GitHub Actions); see https://signpath.org.
@@ -362,6 +360,11 @@ earned a reputation. Two ways to sign:
   the Windows SDK; the signature is timestamped (`FOTODIT_SIGN_TIMESTAMP` chooses the RFC 3161 server,
   DigiCert's by default). The signed exe is self-tested again. (This path has not been tried with a real
   certificate yet.)
+* **The Microsoft Store** signs an MSIX package when it is submitted. `packaging\make_msix.py` packs the
+  folder build as one (it needs the Windows SDK; the package identity comes from
+  `packaging\msix\identity.json`, which git ignores); none has been published. Installed as a package,
+  Fotodit keeps `Fotodit.exe` in a folder Windows protects, so a Send To shortcut points to
+  `%LOCALAPPDATA%\Microsoft\WindowsApps\fotodit.exe`.
 
 ### Project structure
 
@@ -412,9 +415,10 @@ fotodit/
 tests/
   unit/             tests without Qt (formats, metadata, processing, video, planning, texts, layout)
   ui/               tests of the interface (offscreen Qt) and smoke_run.py (the UI smoke run with screenshots)
-                    678 automated tests in all, including independent verification with exiv2
+                    706 automated tests in all, including independent verification with exiv2
 packaging/          build.ps1, fotodit.spec (PyInstaller), the entry script, version info, the icon maker,
-                    release packing
+                    release packing, the third-party sources' list and fetcher, MSIX packing
+                    (make_msix.py, msix/)
 licenses/           license texts of the bundled components (see THIRD-PARTY-NOTICES.md)
 docs/RESEARCH.md    research and design report
 ```

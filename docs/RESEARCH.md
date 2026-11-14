@@ -1072,18 +1072,19 @@ reports the GPU encoder it found.
 |---|---|
 | JPEG lossless cleaning | 0.14 s |
 | JPEG rotation + cleaning | 0.19 s |
-| HEIC → JPG + cleaning | 0.61 s |
+| HEIC → JPG + cleaning | 0.61 s at quality 95 %; about 0.72 s at 100 %, the default (18 % longer, measured on one thread) |
 | Cleaning HEIC as HEIC | 4.6 s (with the x265 "medium" preset; it was 10.6 s with the default) |
 | RAW (24 MP) → JPG, "Kamera görünümü" (camera view) | 0.7 s |
 | RAW (24 MP) → JPG, "RAW verisinden işle" (process from RAW data) | 2.4 s |
 
-Example: converting 500 phone photos to JPG and cleaning them takes about 5 minutes. Video measurements are in §6e.
+Example: converting 500 phone photos to JPG and cleaning them takes about 5 minutes at 95 % and about 6 at 100 %.
+Video measurements are in §6e.
 
 ---
 
 ## 9. Testing and verification summary
 
-* **678 automated tests:** 8 formats × cleaning/conversion; both RAW paths × 8 orientations; RAW detection
+* **706 automated tests:** 8 formats × cleaning/conversion; both RAW paths × 8 orientations; RAW detection
   (9 signatures + TIFF-based formats), CR3/RAF metadata structures; all orientation values 1–8; P3/Adobe RGB/CMYK/
   nclx/R03 color conversions; progressive JPEG, restart markers, 4:2:2/4:4:4; APNG, animated WebP/GIF, multi-page TIFF;
   aCropalypse-style hidden PNG data; corrupt/truncated files; misleading extensions;
@@ -1254,7 +1255,8 @@ or differs.
 **Signing.** An unsigned exe makes SmartScreen warn until the file earns a reputation. `packaging\build.ps1 -Sign` signs with a
 certificate from the user's certificate store (signtool, SHA-256, RFC 3161 timestamp) and self-tests the signed exe;
 for an open-source project the SignPath Foundation offers free signing from a CI build. No certificate was available,
-so this path is untested.
+so this path is untested. The Microsoft Store signs an MSIX package when it is submitted: `packaging/make_msix.py`
+packs the folder build as one, but none has been published.
 
 ---
 
