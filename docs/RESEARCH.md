@@ -1,6 +1,6 @@
 # Fotodit — Research and Design Report
 
-*Date: 28 September 2026, updated 31 October 2026 · Version 1.4.0*
+*Date: 28 September 2026, updated 15 November 2026 · Version 1.5.0*
 
 This report summarizes the research done for Fotodit's three main goals and the decisions that were made:
 
@@ -17,7 +17,9 @@ interface to Apple's Liquid Glass design as iOS 27 draws it, in black, white and
 and added keeping the capture date, date-based names, a warning
 for file names that give something away, shrinking photos, finding duplicates, removing a video's sound, the
 horizontal flip and a before/after view (§6g). Version 1.4 gave the interface the look of Artapa's website, dark
-only, with the Onest typeface (§6f), and moved to Qt 6.12, a long-term release.
+only, with the Onest typeface (§6f), and moved to Qt 6.12, a long-term release. Version 1.5 converts to JPG at
+quality 100 by default, with full color resolution (§4), and packs the sources of its GPL and LGPL parts into a zip
+of their own (§11).
 
 Most decisions are based not on assumptions but on **measurements**: the actual behavior of the libraries was
 verified from their source code and through experiments; the results are given in this document with their figures.
