@@ -675,15 +675,6 @@ class GlassSurface(QWidget):
     # The glass of other surfaces skips this one, and this one paints nothing while it is being captured.
     glass_layer = True
 
-    def set_kind(self, kind: str) -> None:
-        self._glass.kind = kind
-        self._glass.invalidate()
-        self._sync_shadow()
-        self.update()
-
-    def kind(self) -> str:
-        return self._glass.kind
-
     def radius(self) -> float | None:
         return self._glass.radius
 

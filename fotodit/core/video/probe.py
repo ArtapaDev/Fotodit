@@ -75,7 +75,6 @@ class VideoInfo:
     sample_rate: int = 0
     audio_streams: int = 0
     unsupported_audio: int = 0  # audio tracks FFmpeg has no decoder for (e.g. iPhone spatial audio): left out
-    bitrate: int = 0
     subtitle_tracks: list[subtitles.SubtitleTrack] = field(default_factory=list)
     data_tracks: list[str] = field(default_factory=list)  # descriptions
     location_tracks: list[str] = field(default_factory=list)  # the data tracks that log a location
@@ -155,7 +154,6 @@ def probe(path: str, fmt: Fmt | None = None) -> VideoInfo:
     with container:
         info.tags = {str(k): str(v) for k, v in container.metadata.items()}
         info.duration = (container.duration or 0) / 1_000_000
-        info.bitrate = container.bit_rate or 0
         try:
             info.chapters = len(container.chapters())
         except Exception:  # noqa: BLE001 - old/obscure formats

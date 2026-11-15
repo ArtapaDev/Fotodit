@@ -569,7 +569,8 @@ a long-term release and the last one for Windows 10, later took its place (PySid
 6.12.0).
 Because Python 3.13 was removed from the computer and 3.14.7 was installed during the work, the virtual environment
 was rebuilt with 3.14 (same package versions; only 5 packages built specifically for 3.14, ~29 MB, were downloaded
-again).
+again). On 15 November 2026 it moved to Python 3.15.2, once every package, pyexiv2 included, shipped a wheel for
+3.15; the package versions stayed the same, and the full tests passed on it before the switch.
 
 ### Where is metadata stored in videos?
 
@@ -1043,7 +1044,7 @@ rotation, crop or exposure.
 
 | Option | Assessment |
 |---|---|
-| **Python 3.14 + Pillow 13.0 + pillow-heif 1.8 + rawpy 0.28 (LibRaw 0.22) + PyAV 19.0 (FFmpeg 9.0) + PySide6 (Qt 6.12, including Multimedia) + PyInstaller 6.22** ✅ | Pillow offers JPEG (libjpeg-turbo), PNG, WebP, **AVIF**, TIFF and **LittleCMS** color management in a single package. pillow-heif provides HEIC reading/writing, rawpy/LibRaw RAW decoding, PyAV video reading/writing. Qt provides a fast thumbnail grid, video playback and a native Windows look. (The project started on Python 3.13; it moved to 3.14 when 3.13 was removed from the computer.) |
+| **Python 3.15 + Pillow 13.0 + pillow-heif 1.8 + rawpy 0.28 (LibRaw 0.22) + PyAV 19.0 (FFmpeg 9.0) + PySide6 (Qt 6.12, including Multimedia) + PyInstaller 6.22** ✅ | Pillow offers JPEG (libjpeg-turbo), PNG, WebP, **AVIF**, TIFF and **LittleCMS** color management in a single package. pillow-heif provides HEIC reading/writing, rawpy/LibRaw RAW decoding, PyAV video reading/writing. Qt provides a fast thumbnail grid, video playback and a native Windows look. (The project started on Python 3.13; it moved to 3.14 when 3.13 was removed from the computer, and to 3.15 in November 2026.) |
 | C# / .NET + Magick.NET | Powerful, but the .NET SDK was not installed; ImageMagick's metadata behavior is harder to control. |
 | Tkinter | The package would be small, but a grid with thousands of thumbnails and a modern look are hard to achieve. |
 | Electron | 150 MB+ package, unnecessary bulk. |

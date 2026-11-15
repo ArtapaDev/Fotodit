@@ -26,7 +26,9 @@ Details of the research and the design decisions: [docs/RESEARCH.md](docs/RESEAR
 
 ## Running
 
-Download one of the release zips and unpack it; no installation is needed:
+Download one of the release zips from Fotodit's page, https://fotodit.artapa.com, or from
+[the latest release on GitHub](https://github.com/artapadev/Fotodit/releases/latest), and unpack it; no
+installation is needed:
 
 * `Fotodit-<version>-windows-x64.zip` (recommended): double-click `Fotodit\Fotodit.exe`. You can move the
   `Fotodit` folder anywhere you like (together with the `_internal` folder inside it).
@@ -293,7 +295,7 @@ USB stick). The app does not connect to the internet.
 
 ## For developers
 
-Requirements: Windows 10/11 (64-bit) and Python 3.14 (`py -3.14`). `packaging\build.ps1` creates the virtual
+Requirements: Windows 10/11 (64-bit) and Python 3.15 (`py -3.15`). `packaging\build.ps1` creates the virtual
 environment and installs the pinned dependencies (`requirements.txt`, `requirements-dev.txt`) from PyPI.
 
 ```powershell

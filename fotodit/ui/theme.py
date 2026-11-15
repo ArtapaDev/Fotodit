@@ -35,7 +35,6 @@ from PySide6.QtWidgets import QApplication, QProxyStyle, QStyle
 # Corner radii (logical px), Artapa's. Inner corners are concentric: inner radius = outer radius − padding.
 RADIUS_STAGE = 24  # the sidebar and inspector cards, sheets
 RADIUS_CARD = 16  # groups inside a card (24 − the card's padding of 8)
-RADIUS_FLOAT = 20  # floating panels (the preview's info panel)
 RADIUS_MENU = 12  # menus
 RADIUS_WELL = 10  # text fields, pop-up buttons, list rows, tooltips
 RADIUS_MEDIA = 9  # thumbnails (Artapa's card media)
@@ -69,7 +68,6 @@ _TOKENS = {
     "BORDER_HOVER": "#29FFFFFF",  # 16 %
     "SEPARATOR": "#14FFFFFF",
     "GRID": "#0FFFFFFF",  # the lines between table rows
-    "RIM": "#0FFFFFFF",  # the line of light inside a top edge
     "TRACK": "#1FFFFFFF",  # slider and progress tracks (12 %)
     # States: Artapa's positive, opt-mid and field-error; its danger for what ends something
     "SUCCESS": "#86E3B5",
@@ -80,8 +78,6 @@ _TOKENS = {
     "STOP_RING": "#47FF5A5A",
     # Artapa's tones
     "PEACH": "#FFBEA2",
-    "PERIWINKLE": "#A2B7F5",
-    "LILAC": "#D4D9E4",
     "EDIT": "#A2B7F5",  # edited photos and videos (periwinkle, Artapa's "new")
     "AURORA_WARM": "#FEEAE1",
     "AURORA_COOL": "#C0CEF2",
@@ -110,8 +106,8 @@ _TOKENS = {
 # The tokens as module attributes (filled in from _TOKENS just below).
 WINDOW = PAGE = PANEL = SURFACE_2 = TEXT = MUTED = FAINT = DISABLED = ACCENT = ON_ACCENT = ACCENT_SOFT = ""
 ACCENT_TEXT = SELECTION = WELL = WELL_HOVER = HOVER = PRESSED = ITEM_HOVER = CARD_BG = BORDER = ""
-BORDER_HOVER = SEPARATOR = GRID = RIM = TRACK = SUCCESS = WARN = DANGER = STOP = STOP_TINT = STOP_RING = ""
-PEACH = PERIWINKLE = LILAC = EDIT = AURORA_WARM = AURORA_COOL = PREMIUM_START = SILVER_TOP = SILVER_MIDDLE = ""
+BORDER_HOVER = SEPARATOR = GRID = TRACK = SUCCESS = WARN = DANGER = STOP = STOP_TINT = STOP_RING = ""
+PEACH = EDIT = AURORA_WARM = AURORA_COOL = PREMIUM_START = SILVER_TOP = SILVER_MIDDLE = ""
 SILVER_FOOT = INPUT_DISABLED = TOOLTIP = PLACEHOLDER = CHECK_BORDER = CHECK_BORDER_HOVER = CHECK_ON_OFF = ""
 SWITCH_OFF = FOLDER = FOLDER_TAB = LIGHT_ROLE = MIDLIGHT = MID = DARK_ROLE = SHADOW = ""
 globals().update(_TOKENS)
@@ -158,11 +154,6 @@ def changes() -> _Changes:
     if _changes is None:
         _changes = _Changes()
     return _changes
-
-
-def family() -> str:
-    """The UI font: the bundled Onest (see `fonts`), else Segoe UI Variable or Segoe UI."""
-    return _family
 
 
 def font(size: float = 10.0, weight: QFont.Weight = QFont.Weight.Normal) -> QFont:

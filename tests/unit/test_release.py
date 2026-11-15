@@ -57,7 +57,7 @@ def _fake_builds(tmp_path: Path, drop: str | None = None) -> Path:
     folder = dist / "Fotodit"
     (folder / "_internal").mkdir(parents=True)
     (folder / "Fotodit.exe").write_bytes(b"MZ folder")
-    (folder / "_internal" / "python314.dll").write_bytes(b"MZ dll")
+    (folder / "_internal" / "python315.dll").write_bytes(b"MZ dll")
     (dist / "onefile").mkdir()
     (dist / "onefile" / "Fotodit.exe").write_bytes(b"MZ onefile")
     legal = folder / "_internal" / "legal"
@@ -105,7 +105,7 @@ def test_release_zips_carry_the_license_files(tmp_path):
                      f"Fotodit-{__version__}-source.zip", f"Fotodit-{__version__}-third-party-sources.zip"]
     with zipfile.ZipFile(outputs[0]) as zf:
         inside = set(zf.namelist())
-    assert {"Fotodit/Fotodit.exe", "Fotodit/_internal/python314.dll", "Fotodit/LICENSE.txt",
+    assert {"Fotodit/Fotodit.exe", "Fotodit/_internal/python315.dll", "Fotodit/LICENSE.txt",
             "Fotodit/THIRD-PARTY-NOTICES.txt", "Fotodit/licenses/LGPL-3.0.txt",
             "Fotodit/licenses/python-packages/av/LICENSE.txt"} <= inside
     with zipfile.ZipFile(outputs[1]) as zf:
